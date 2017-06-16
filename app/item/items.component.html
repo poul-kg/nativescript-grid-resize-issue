@@ -1,14 +1,21 @@
 <ActionBar title="My App" class="action-bar">
 </ActionBar>
-<GridLayout backgroundColor="red" #grid rows="128,auto,auto,auto" columns="*" class="deal-component border"
-(tap)="onTap($event)"
-            [class.small]="isPreview"
-            [class.server]="id === 'neonbot'">
-    <Image row="0" col="0" class="img" [src]="'~/img/icon.png'" width="100%"
-           stretch="aspectFill"></Image>
-    <Label row="1" col="0" class="title" [text]="'Test title'"></Label>
-    <Label row="2" col="0" class="subtitle" [text]="'subtitle'"
-           textWrap="true"></Label>
-    <Label row="3" col="0" class="text" [text]="'attachment.content.text'"
-           textWrap="true"></Label>
-</GridLayout>
+<ListView [items]="messages" [itemTemplateSelector]="templateSelector"
+          row="0" style="height: 100%" #listView>
+
+    <!-- Tiny Carousel -->
+    <ng-template nsTemplateKey="Grid" let-item="item">
+        <GridLayout backgroundColor="red" #grid rows="128,auto,auto,auto" columns="*" class="deal-component border"
+                    (tap)="onTap($event)"
+                    [class.small]="isPreview"
+                    [class.server]="id === 'neonbot'">
+            <Image row="0" col="0" class="img" [src]="'~/img/icon.png'" width="100%"
+                   stretch="aspectFill"></Image>
+            <Label row="1" col="0" class="title" [text]="'Test title'"></Label>
+            <Label row="2" col="0" class="subtitle" [text]="'subtitle'"
+                   textWrap="true"></Label>
+            <Label row="3" col="0" class="text" [text]="'attachment.content.text'"
+                   textWrap="true"></Label>
+        </GridLayout>
+    </ng-template>
+</ListView>
